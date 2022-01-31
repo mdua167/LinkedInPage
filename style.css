@@ -20,6 +20,7 @@ body
  
 }
 .header
+
 {
   position: sticky; 
   display: flex; 
@@ -273,7 +274,7 @@ body
 {
   border-radius: 10px;
   padding-bottom: 20px;
-  margin-bottom: 20px; 
+  margin-bottom: 10px; 
   padding: 10px; 
   margin-left: 10px;
   background-color: white; 
@@ -301,6 +302,7 @@ body
   display: flex;
   border: 1px solid lightgrey; 
   padding-left: 16px;
+  
 }
 input::placeholder
 {
@@ -391,7 +393,7 @@ input::placeholder
 }
 .follow
 {
-  color:#1f3b97;
+  color: #0a66c2;
    display: flex;
   text-align: center;
 }
@@ -465,6 +467,7 @@ input::placeholder
   position: sticky; 
   top: 0px; 
   flex: 0.28;
+  bottom: 0;
   margin-right: 20px;
   /* background-color: white;  */
   border-radius: 10px; 
@@ -539,7 +542,82 @@ input::placeholder
   padding-bottom: 10px;
   text-align: center;
   padding-top: 10px;
+  border-bottom-left-radius: 10px;
+  border-bottom-right-radius: 10px
+}
+
+ /* Styling post button here */
+ #post_btn
+ {
+   width: 13%;
+   height: 1000%;
+   
+   background-color: #0a66c2;
+   
+    border-bottom-left-radius: 10px; 
+   border-bottom-right-radius: 10px;
+   border-top-left-radius: 10px;
+  border-top-right-radius: 10px; 
+ }
+ #post_btn:hover
+ {
+   background-color: #004182;
+ }
+ .like_comment
+ {
+   padding-top: 30px;
+ }
+ #like_btn
+ {
+   display: flex; 
+   padding: 11px; 
+  margin-top: 14px; 
+  color: grey;  
+  background-color: white; 
+   cursor: pointer;
+   margin: 2px solid white; 
   
+   
+ }
+
+#like_btn h5
+{
+  font-size: 15px;
+  text-align: center;
+  margin-left: 7px;
+}
+ #like_btn:hover{
+   background-color: lightgrey; 
+ }
+#comment_btn
+ {
+
+    display: flex; 
+    padding: 11px; 
+    margin-top: 14px; 
+    color: grey;  
+    background-color: white; 
+    cursor: pointer;
+    margin: 2px solid white; 
+ }
+#comment_btn:hover
+{
+  background-color: lightgrey; 
+}
+#comment_btn h5
+{
+  font-size: 15px;
+  text-align: center;
+  margin-left: 7px;
+}
+#div-container
+{
+   width: 5em;
+  height: 2em;
+  margin: 0 1em 1em 0;
+  transition: all 100ms ease-in-out;
+}
+
 /* 
   
   padding: 10px; 
@@ -548,10 +626,7 @@ input::placeholder
   border-bottom: 0px;
    */
  
-   border-bottom-left-radius: 10px;
-  border-bottom-right-radius: 10px
-  
-}
+
 /* .postBod
 {
   border-top-left-radius: 10px;

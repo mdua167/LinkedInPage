@@ -94,6 +94,17 @@
               <img src = "images/gold.png"> 
               <p style = "color: black;font-weight: 500; font-size: 15px; display: inline;"> Try Premium for free</p>
           </div>
+          
+          <!-- <div class="sidebar-stat1">
+             <p style = "color: black;font-weight: 500; font-size: 15px"> Try Premium for free</p>
+          </div> -->
+           
+          
+        <!-- <div class="toolsStat">
+            <p style = "color: grey;font-weight: 500; font-size: 13px"> Access Exclusive tools and insides </p>
+            <img src = "images/gold.png">
+            <h4> Try Premium for free </h4>
+        </div> -->
       </div>
        <div class="middle3">
           <div class="items">
@@ -154,7 +165,7 @@
         </div>
         <div class="input">
           <form> 
-            <input type = "text" placeholder = "Start a post"/>
+            <input type = "text" placeholder = "Start a post" id = "post_text"/>
           </form>
         </div>
         <div class="postOptions">
@@ -179,6 +190,9 @@
             <h4> Write article</h4>
           </div>
         </div>
+         <div class="post-b">
+          <input type = "button" value = "Post" id = "post_btn" onClick = "clickPost();"> </input> 
+        </div>
       </div>
      
       <!-- start here -->
@@ -199,6 +213,48 @@
           </div> -->
         </div>
      </div>
+     
+     <div id="test">
+
+     </div>
+<!-- display: none; -->
+     <div class="postBod" id = "pAdd" style = "padding-top: 2px; display: none; " id = "postDiv" >
+      <div class="contact" id = "c">
+         <i class = "material-icons headerOptions" style = "font-size: 60px;  ">account_circle </i>
+        <div class="description" id = "d">
+           <h4>
+          <span class="blackTag">Sam Daubney</span>
+          <span class="greyTag">. 3rd+</span> 
+          </h4>
+          <h5 style = "color: grey;" > Functional Programming Advocate at Signify Technology
+          </h5> 
+          <h5>
+            <span class="greyTag">1d.</span> 
+          </h5> 
+          <div class="follow">
+             <i class = "material-icons plusI" style = "font-size: 25px; position: fixed;bottom: 340px; right: 430px; top: 320px ">add </i> 
+             <h3 style = "position: fixed;bottom: 340px; right: 370px; top: 320px"> Follow</h3> 
+          </div>
+        </div>
+      </div>
+      <div class="post" id = "p">
+          <!-- <h4 style = "font-weight: 10; font-size: 15px;position: relative: right: 7px;" id = "mainB"> POLL TIME!</h4> -->
+           <p id = "post_content">post 1 </p>
+          <h2 style = "color: grey; font-size: 15px; padding-top: 5px;"> 13 - 3 comments</h2> 
+      </div>
+      <div class="like_comment" style = " margin-top: 10px; display: flex; padding-top: 10px;" id = "lc">
+        <!--  --> 
+        <button id = "like_btn" > 
+          <i class = "material-icons dots" style = "font-size: 20px; flex:left." id = "thumbUp" onclick="tapLike();"> thumb_up </i> 
+          <h5 id = "like"> Like</h5> 
+        </button>
+        <button id = "comment_btn"> 
+          <i class = "material-icons dots" style = "font-size: 20px; flex:left." id = "thumbUp" > insert_comment </i> 
+          <h5> Comment</h5> 
+        </button> 
+      </div>
+    </div>
+    
      <div class="postBod" style = "padding-top: 2px;">
       <div class="postTop"> 
         <h5>
@@ -229,7 +285,8 @@
         </div>
       </div>
       <div class="post">
-          <h4 style = "font-weight: 10; font-size: 15px;position: relative: right: 7px;"> POLL TIME!</h4>
+          <h4 style = "font-weight: 10; font-size: 15px;position: relative: right: 7px;" id = "mainB"> POLL TIME!</h4>
+         
           <div class="poll">
             <h3> Are you using React as much as you would like to in your current role?  </h3>
             <h4>
@@ -251,7 +308,20 @@
       </div>
     </div>
     <!-- Post div ends here -->
- 
+
+    <!-- testing second div here  -->
+
+    <!-- <div id="welcomeDiv"  style="display:none;" class="answer_list" > WELCOME</div>
+<input type="button" name="answer" value="Show Div" onclick="showDiv()" />
+Javascript:
+
+function showDiv() {
+   document.getElementById('welcomeDiv').style.display = "block";
+} -->
+
+    <!-- start here  -->
+    
+    <!-- ending second div here  -->
   </div> 
   <div class="news_l">
     <div class="news_header">
@@ -308,13 +378,7 @@
   </div>
   <div class="links">
      
-  </div>
-  <!-- News ends here  -->
-  
-  <!-- Start ending tags  -->
-  
-  <!-- End ending tags  -->
-
-  <!-- Main Body ends  -->
+    </div>
+ 
   </body>
 </html>
