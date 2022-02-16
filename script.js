@@ -1,97 +1,274 @@
-
 let clicked = false; //checks if like button is pressed
-const DivContainer = document.getElementById("div-container");
-var postText = "";
+let count = 0; //tracks the number of times user taps on comment button 
+
 function clickPost()
 {
-    var postVal = document.getElementById('post_text').value;
-    console.log(postVal);
-    
-    // button.addEventListener('click', tapLike);
+  //main card that holds other elements 
+  var post = document.createElement("div");
+  post.classList.add("postT");
+  post.setAttribute("id", "postC");
+  //section for contact img and info 
+  var con = document.createElement("div"); 
+  con.classList.add("contact");
+  //contact image 
+  var contactImage = document.createElement("img");
+  contactImage.src = "images/sahil.jpg";
+  contactImage.classList.add("contact_img");
+  
 
-    var element1 = document.createElement("div");
-    var element2 = document.createElement("div"); 
-    var element3 = document.createElement("div");
-    var element4 = document.createElement("div");
-    
-    var content = document.getElementById('c'); //contact class 
-    var content2 = document.getElementById('p'); //posts class
-    var content3 = document.getElementById('lc');
-    
-    
-    // element2.textContent = postVal; 
-    element1.classList.add("postBod"); 
-    
-    // element2.classList.add("description");
-    // postText = document.getElementById('post_content');
-    // postText.textContent = postVal; 
-    // element2.innerHtml = 
-    // element2.classList.add('contact');
-    element2.appendChild(content.cloneNode(true));
-    element3.appendChild(content2.cloneNode(true));
-    element4.appendChild(content3.cloneNode(true));
-    document.getElementById("like_btn").addEventListener("click", tapLike);
+  var description = document.createElement("div"); 
+  description.classList.add("description"); 
 
-   postText = document.getElementById('post_content');
-   postText.textContent = postVal; 
-    
-            // down.innerHTML = "Inner DIV is copied"
-            //             + " to another element.";
+  //for info with img 
+  var contact = document.createElement("h4"); 
+  var name1 = document.createElement("span"); 
+  var name2 = document.createElement("span"); 
+
+  name1.classList.add("blackTag"); 
+  name2.classList.add("greyTag"); 
+
+  name1.innerHTML = "Sahil Khurana"; 
+  name2.innerHTML = ". 3rd+"; 
+
+  var time = document.createElement("h5"); 
+  var day = document.createElement("span"); 
+  day.innerHTML = "1d."; 
+  day.style.color = "grey"; 
+
+  //appending all span to h4 and h5 
+  contact.appendChild(name1); 
+  contact.appendChild(name2); 
+  time.appendChild(day);
 
 
-    // element2.classList.add("description");
+  var info = document.createElement("h5"); 
+  info.innerHTML = "Software Engineering Manager at Karma Circles";
+  info.style.color = "grey"; 
 
-    // // const content = element2.innerHTML;
-    // element2.textContent = element2.innerText;
+  var text = document.createElement("div"); 
+  var content = document.createElement("p"); 
+  var comment = document.createElement("h2"); 
+  var postVal = document.getElementById('post_text').value;
+  //value inside the post 
 
-    // element1.innerHTML = element2.textContent;
-    // element1.appendChild(element2); 
+  comment.classList.add("comment");
+  comment.innerHTML = "13-3 comments"; 
+ 
+  content.classList.add("content");
+  content.innerHTML = postVal; 
+  
+  var like_comment = document.createElement("div"); 
+  var like_btn = document.createElement("button");
+  var comment_btn = document.createElement("button"); 
+  
+  like_btn.style.border = "none";
+  comment_btn.style.border = "none"; 
 
-    // element2.classList.add("contact");
-    // element1.appendChild
-    // (
-    //   document.getElementById('postBod')
-    // );
-    // element1.classList.add("postBod");
-    // element1.appendChild
-    // (document.getElementById('c'));
-   
-    // var element2 = document.createElement("div"); 
-    // element2.classList.add("contact");
-    
-    // element1.appendChild(element2);
-    
-    // var post = document.getElementById("pAdd");
+  var likeL = document.createElement("h5"); //Like Label 
+  likeL.innerHTML = "Like"; 
+  likeL.classList.add("like"); 
+  likeL.setAttribute("id", "likeB"); 
 
-    // element.appendChild(post);
-    // element1.appendChild(element2);
+  var like_icon = document.createElement("img"); //like icon 
+  like_icon.src = "images/like_button2.png"; 
+  like_icon.classList.add("like_img");
+  like_icon.setAttribute("id", "likeI"); 
 
-    element3.append(element4);
-    element2.append(element3);
-    element1.append(element2);
-    
-    document.getElementById('test').appendChild(element1);
+  var commentL = document.createElement("h5"); //Like Label 
+  commentL.innerHTML = "Comment"; 
 
-    document.getElementById('post_text').value = " "; //setting value in start a post text to blank 
+  var comment_icon = document.createElement("img"); //like icon 
+  comment_icon.src = "images/comment.png"; 
+  comment_icon.classList.add("like_img");
+
+  like_comment.classList.add("like_comment"); 
+  like_btn.classList.add("like_btn"); 
+  comment_btn.classList.add("comment_btn");
+
+  like_btn.appendChild(like_icon);
+  like_btn.appendChild(likeL); 
+  comment_btn.appendChild(comment_icon); 
+  comment_btn.appendChild(commentL);
+
+  like_comment.appendChild(like_btn); 
+  like_comment.appendChild(comment_btn);
+
+  text.appendChild(content); 
+  text.appendChild(comment); 
+
+  description.appendChild(contact); 
+  description.appendChild(info);
+  description.appendChild(time); 
+
+  //appending the image and description to con
+  con.appendChild(contactImage); 
+  con.appendChild(description);
+  
+  //adding con to main post div 
+  post.appendChild(con);
+  post.appendChild(text);
+  post.appendChild(like_comment);
+
+  document.getElementById('post_text').value = " ";
+
+  //post is added to blank div in html file 
+  document.getElementById('post-card').prepend(post);
+ 
+  like_btn.addEventListener("click", tapLike); 
+  
+  comment_btn.addEventListener("click", showComments); 
 }
 
 
 //Changes color of like button when user taps and goes back to white when user taps on button again
-let likeIcon = document.getElementById('thumbUp');
-let likeWord = document.getElementById('like');
-
 function tapLike()
 {
+  console.log("i am coming here");
   if(!clicked)
   {
     clicked = true; 
-    document.getElementById('like').style.color = '#0a66c2';
-    document.getElementById('thumbUp').style.color = '#0a66c2';
+    document.getElementById('likeB').style.color = '#0a66c2';
+    document.getElementById('likeI').style.color = '#0a66c2';
   }
   else
   {
     clicked = false; 
-    document.getElementById('like').style.color = 'grey';
-    document.getElementById('thumbUp').style.color = 'grey';
+    document.getElementById('likeB').style.color = 'grey';
+    document.getElementById('likeI').style.color = 'grey';
   }
+}
+//shows comments when user taps on comment button
+ /*if(count == 1) ensures that another div is not created if the user taps on comment more than once  
+  {*/
+function showComments()
+{
+  count++; 
+
+   console.log("im doming here"); 
+    var main_c = document.createElement("div"); 
+    main_c.classList.add("comment_page");
+    main_c.setAttribute("id", "c_page"); 
+
+    document.getElementById("postC").style.borderBottomRightRadius = "0px";
+    document.getElementById("postC").style.borderBottomLeftRadius = "0px";
+    
+    //making image div and adding image to it 
+    var img_c = document.createElement("div"); 
+    img_c.classList.add("imgClass"); 
+    var contactImage = document.createElement("img");
+    contactImage.src = "images/sahil.jpg";
+    contactImage.classList.add("comment_img");
+    img_c.appendChild(contactImage); 
+
+    //making comment div and adding a form with input to it 
+    var commentInput = document.createElement("div"); 
+    commentInput.classList.add("input_trial");
+
+    var form = document.createElement("form");
+    var input = document.createElement("input"); 
+    
+    input.setAttribute("type", "text"); 
+    // input.setAttribute("id", "post_comment"); 
+    input.setAttribute("placeholder", "Add a comment..."); 
+    input.setAttribute("id", "comment");
+
+    form.appendChild(input); 
+    commentInput.appendChild(form); 
+
+    var postB = document.createElement("button"); 
+    postB.setAttribute("value", "hi"); 
+    postB.classList.add("post-b"); 
+    // postB.style.display = "none"; 
+  /*
+  <div class="post-b">
+          <input type = "button" value = "Post" id = "post_btn" onClick = "clickPost();"> </input> 
+        </div>
+
+  */
+  
+  // input.addEventListener("keyup", function(event) {
+  //   if (event.keyCode === 13) {
+  //       alert('Enter is pressed!');
+  //   }
+  //   });
+    
+   
+    var postB = document.createElement("button");
+    postB.setAttribute("id", "post_comment"); 
+    postB.addEventListener("click", postComment); 
+
+    var likeL = document.createElement("h5"); //Like Label 
+    likeL.innerHTML = "Post"; 
+    likeL.classList.add("like"); 
+    likeL.setAttribute("id", "likeB"); 
+
+    postB.appendChild(likeL);
+    
+    //code trial to hide the comment 
+  //   if(count % 2 == 0)
+  //  {
+  //    console.log("should change");
+  //    document.getElementById("test").style.display = "none"; 
+  //  }
+  //  else
+  //  {
+  //    document.getElementById("test").style.display = "block"; //have to make sure that when I show it again, it shows up only once 
+  //  } 
+    main_c.append(img_c); 
+    main_c.append(commentInput);
+    main_c.append(postB);
+
+    console.log("coming till here also");
+    document.getElementById("test").append(main_c);   
+
+  
+}
+function postComment()
+{
+  count++; 
+  var comment_box = document.createElement("div");
+  comment_box.classList.add("comment_b"); 
+
+  var grey_box = document.createElement("div"); 
+  grey_box.classList.add("c_box"); 
+  var contactImage = document.createElement("img");
+  contactImage.src = "images/sahil.jpg";
+  contactImage.classList.add("commentbox_img");
+
+ 
+ var name = document.createElement("h4"); 
+ name.innerHTML = "Sahil Khurana"; 
+ name.style.fontWeight = "12px";
+ var description = document.createElement("h5"); 
+ description.innerHTML = "Software Engineering Manager at Karma Circles"; 
+ description.classList.add("greyTag");
+
+var userComment = document.getElementById("comment").value;
+var comment = document.createElement("h5"); 
+comment.innerHTML = userComment; 
+
+ grey_box.appendChild(name); 
+ grey_box.appendChild(description);
+ grey_box.appendChild(comment);
+
+
+ comment_box.append(contactImage); 
+ comment_box.append(grey_box);
+ 
+//  document.getElementById("img_c").insertBefore(comment_box);
+//  document.getElementById("commentInput").insertBefore(comment_box);
+//  document.getElementById("postB").insertBefore(comment_box);
+ document.getElementById("c_page").append(comment_box);
+ document.getElementById("comment").value = " ";
+
+
+  
+//   var box = document.createElement("div"); 
+//   box.classList.add("c_box"); 
+
+// comment_box.appendChild(contactImage); 
+// comment_box.appendChild(box); 
+
+// document.getElementById("test").append(comment_box);   
+  
 }
