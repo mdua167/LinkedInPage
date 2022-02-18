@@ -1,12 +1,17 @@
 let clicked = false; //checks if like button is pressed
-let count = 0; //tracks the number of times user taps on comment button 
+let count = 0; //tracks the number of posts for ids 
+let commentC = 0; 
 
 function clickPost()
 {
+  count++; //increments the number of posts here 
   //main card that holds other elements 
   var post = document.createElement("div");
   post.classList.add("postT");
-  post.setAttribute("id", "postC");
+  // post.setAttribute("id", "postC");
+
+  post.setAttribute("id", count.toString()); 
+
   //section for contact img and info 
   var con = document.createElement("div"); 
   con.classList.add("contact");
@@ -14,7 +19,6 @@ function clickPost()
   var contactImage = document.createElement("img");
   contactImage.src = "images/sahil.jpg";
   contactImage.classList.add("contact_img");
-  
 
   var description = document.createElement("div"); 
   description.classList.add("description"); 
@@ -116,11 +120,16 @@ function clickPost()
  
   like_btn.addEventListener("click", tapLike); 
   
-  comment_btn.addEventListener("click", showComments); 
+  comment_btn.addEventListener("click", showComments(post.getAttribute("id"))); 
+
+  // var test = document.createElement("div"); 
+  // test.setAttribute("id", count.toString()); 
+
+
 }
 
 
-//Changes color of like button when user taps and goes back to white when user taps on button again
+//Changes color of like button when user taps and goes ba7th ck to white when user taps on button again
 function tapLike()
 {
   console.log("i am coming here");
@@ -140,17 +149,17 @@ function tapLike()
 //shows comments when user taps on comment button
  /*if(count == 1) ensures that another div is not created if the user taps on comment more than once  
   {*/
-function showComments()
+// @param: id of the post i.e.: 1, 2
+function showComments(postId) 
 {
-  count++; 
-
-   console.log("im doming here"); 
+  commentC++;
+   console.log("im coming here"); 
     var main_c = document.createElement("div"); 
     main_c.classList.add("comment_page");
     main_c.setAttribute("id", "c_page"); 
 
-    document.getElementById("postC").style.borderBottomRightRadius = "0px";
-    document.getElementById("postC").style.borderBottomLeftRadius = "0px";
+    document.getElementById(postId).style.borderBottomRightRadius = "0px";
+    document.getElementById(postId).style.borderBottomLeftRadius = "0px";
     
     //making image div and adding image to it 
     var img_c = document.createElement("div"); 
@@ -201,7 +210,7 @@ function showComments()
     likeL.innerHTML = "Post"; 
     likeL.classList.add("like"); 
     likeL.setAttribute("id", "likeB"); 
-
+    
     postB.appendChild(likeL);
     
     //code trial to hide the comment 
@@ -219,13 +228,11 @@ function showComments()
     main_c.append(postB);
 
     console.log("coming till here also");
-    document.getElementById("test").append(main_c);   
-
+    document.getElementById(postId).append(main_c); 
   
 }
 function postComment()
 {
-  count++; 
   var comment_box = document.createElement("div");
   comment_box.classList.add("comment_b"); 
 
@@ -260,7 +267,6 @@ comment.innerHTML = userComment;
 //  document.getElementById("postB").insertBefore(comment_box);
  document.getElementById("c_page").append(comment_box);
  document.getElementById("comment").value = " ";
-
 
   
 //   var box = document.createElement("div"); 
