@@ -1,17 +1,14 @@
 let clicked = false; //checks if like button is pressed
-let count = 0; //tracks the number of posts for ids 
-let commentC = 0; 
-
+let count = 0; //tracks the number of posts for button and card 
+let commentCount = 0; 
+  
 function clickPost()
 {
-  count++; //increments the number of posts here 
+  count++; 
   //main card that holds other elements 
   var post = document.createElement("div");
   post.classList.add("postT");
-  // post.setAttribute("id", "postC");
-
-  post.setAttribute("id", count.toString()); 
-
+  post.setAttribute("id", count.toString());
   //section for contact img and info 
   var con = document.createElement("div"); 
   con.classList.add("contact");
@@ -19,6 +16,7 @@ function clickPost()
   var contactImage = document.createElement("img");
   contactImage.src = "images/sahil.jpg";
   contactImage.classList.add("contact_img");
+  
 
   var description = document.createElement("div"); 
   description.classList.add("description"); 
@@ -88,6 +86,7 @@ function clickPost()
   like_comment.classList.add("like_comment"); 
   like_btn.classList.add("like_btn"); 
   comment_btn.classList.add("comment_btn");
+  comment_btn.setAttribute("id", count.toString()); 
 
   like_btn.appendChild(like_icon);
   like_btn.appendChild(likeL); 
@@ -119,17 +118,14 @@ function clickPost()
   document.getElementById('post-card').prepend(post);
  
   like_btn.addEventListener("click", tapLike); 
-  
-  comment_btn.addEventListener("click", showComments(post.getAttribute("id"))); 
 
-  // var test = document.createElement("div"); 
-  // test.setAttribute("id", count.toString()); 
-
-
+  like_comment.addEventListener("click", showComments, false); 
+  // post.addEvent.Listener("click", showComments, false); 
+  // comment_btn.addEventListener("click", showComments); 
 }
 
 
-//Changes color of like button when user taps and goes ba7th ck to white when user taps on button again
+//Changes color of like button when user taps and goes back to white when user taps on button again
 function tapLike()
 {
   console.log("i am coming here");
@@ -149,17 +145,23 @@ function tapLike()
 //shows comments when user taps on comment button
  /*if(count == 1) ensures that another div is not created if the user taps on comment more than once  
   {*/
-// @param: id of the post i.e.: 1, 2
-function showComments(postId) 
+function showComments(e)
 {
-  commentC++;
-   console.log("im coming here"); 
+  if(e.target !== e.currentTarget)
+  {
+    var clickedItem = e.target.id; 
+    // var s = document.createElement("div"); 
+    // s.classList.add("comment_page"); 
+    alert(clickedItem);
+
+    // document.getElementById(clickedItem).append(s);
+  
     var main_c = document.createElement("div"); 
     main_c.classList.add("comment_page");
     main_c.setAttribute("id", "c_page"); 
 
-    document.getElementById(postId).style.borderBottomRightRadius = "0px";
-    document.getElementById(postId).style.borderBottomLeftRadius = "0px";
+    // document.getElementById(clickedItem).style.borderBottomRightRadius = "0px";
+    // document.getElementById(clickedItem).style.borderBottomLeftRadius = "0px";
     
     //making image div and adding image to it 
     var img_c = document.createElement("div"); 
@@ -204,13 +206,14 @@ function showComments(postId)
    
     var postB = document.createElement("button");
     postB.setAttribute("id", "post_comment"); 
+    
     postB.addEventListener("click", postComment); 
 
     var likeL = document.createElement("h5"); //Like Label 
     likeL.innerHTML = "Post"; 
     likeL.classList.add("like"); 
     likeL.setAttribute("id", "likeB"); 
-    
+
     postB.appendChild(likeL);
     
     //code trial to hide the comment 
@@ -228,11 +231,25 @@ function showComments(postId)
     main_c.append(postB);
 
     console.log("coming till here also");
-    document.getElementById(postId).append(main_c); 
+    // var d = document.createElement("div");
+    
+    // d.appendChild(main_c);
+    
+    document.getElementById(clickedItem).append(main_c);   
+    // main_c.addEventListener("click", postComment, false); 
+    postB.addEventListener("click", postComment, false); 
+  }
   
 }
-function postComment()
+function postComment(e)
 {
+  if(e.target !== e.currentTarget)
+  {
+    var clickedItem = e.target.id; 
+    // var s = document.createElement("div"); 
+    // s.classList.add("comment_page"); 
+    alert(clickedItem);
+  }
   var comment_box = document.createElement("div");
   comment_box.classList.add("comment_b"); 
 
@@ -265,8 +282,12 @@ comment.innerHTML = userComment;
 //  document.getElementById("img_c").insertBefore(comment_box);
 //  document.getElementById("commentInput").insertBefore(comment_box);
 //  document.getElementById("postB").insertBefore(comment_box);
- document.getElementById("c_page").append(comment_box);
+
+  document.getElementById("c_page").append(comment_box);
+  // document.getElementById(clickedItem).append(comment_box);
+ // document.getElementById("c_page").append(comment_box);
  document.getElementById("comment").value = " ";
+
 
   
 //   var box = document.createElement("div"); 
