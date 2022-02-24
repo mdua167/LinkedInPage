@@ -152,13 +152,13 @@ function showComments(e)
     var clickedItem = e.target.id; 
     // var s = document.createElement("div"); 
     // s.classList.add("comment_page"); 
-    alert(clickedItem);
+    // alert(clickedItem);
 
-    // document.getElementById(clickedItem).append(s);
+    
   
     var main_c = document.createElement("div"); 
     main_c.classList.add("comment_page");
-    main_c.setAttribute("id", "c_page"); 
+    main_c.setAttribute("id", count.toString()); 
 
     // document.getElementById(clickedItem).style.borderBottomRightRadius = "0px";
     // document.getElementById(clickedItem).style.borderBottomLeftRadius = "0px";
@@ -205,16 +205,18 @@ function showComments(e)
     
    
     var postB = document.createElement("button");
-    postB.setAttribute("id", "post_comment"); 
+   
     
-    postB.addEventListener("click", postComment); 
+    // postB.addEventListener("click", postComment); 
 
     var likeL = document.createElement("h5"); //Like Label 
     likeL.innerHTML = "Post"; 
     likeL.classList.add("like"); 
-    likeL.setAttribute("id", "likeB"); 
+    likeL.setAttribute("id", count.toString()); 
 
     postB.appendChild(likeL);
+    postB.classList.add("post_comment");
+    postB.setAttribute("id", count.toString()); 
     
     //code trial to hide the comment 
   //   if(count % 2 == 0)
@@ -236,8 +238,8 @@ function showComments(e)
     // d.appendChild(main_c);
     
     document.getElementById(clickedItem).append(main_c);   
-    // main_c.addEventListener("click", postComment, false); 
-    postB.addEventListener("click", postComment, false); 
+    main_c.addEventListener("click", postComment, false); 
+    // postB.addEventListener("click", postComment, false);  //postB
   }
   
 }
@@ -248,7 +250,7 @@ function postComment(e)
     var clickedItem = e.target.id; 
     // var s = document.createElement("div"); 
     // s.classList.add("comment_page"); 
-    alert(clickedItem);
+    // alert(clickedItem); 
   }
   var comment_box = document.createElement("div");
   comment_box.classList.add("comment_b"); 
@@ -260,34 +262,32 @@ function postComment(e)
   contactImage.classList.add("commentbox_img");
 
  
- var name = document.createElement("h4"); 
- name.innerHTML = "Sahil Khurana"; 
- name.style.fontWeight = "12px";
- var description = document.createElement("h5"); 
- description.innerHTML = "Software Engineering Manager at Karma Circles"; 
- description.classList.add("greyTag");
-
-var userComment = document.getElementById("comment").value;
-var comment = document.createElement("h5"); 
-comment.innerHTML = userComment; 
-
- grey_box.appendChild(name); 
- grey_box.appendChild(description);
- grey_box.appendChild(comment);
-
-
- comment_box.append(contactImage); 
- comment_box.append(grey_box);
+   var name = document.createElement("h4"); 
+   name.innerHTML = "Sahil Khurana"; 
+   name.style.fontWeight = "12px";
+   var description = document.createElement("h5"); 
+   description.innerHTML = "Software Engineering Manager at Karma Circles"; 
+   description.classList.add("greyTag");
+  
+  var userComment = document.getElementById("comment").value;
+  var comment = document.createElement("h5"); 
+  comment.innerHTML = userComment; 
+  
+   grey_box.appendChild(name); 
+   grey_box.appendChild(description);
+   grey_box.appendChild(comment);
+  
+  
+   comment_box.append(contactImage); 
+   comment_box.append(grey_box);
  
-//  document.getElementById("img_c").insertBefore(comment_box);
-//  document.getElementById("commentInput").insertBefore(comment_box);
-//  document.getElementById("postB").insertBefore(comment_box);
 
-  document.getElementById("c_page").append(comment_box);
-  // document.getElementById(clickedItem).append(comment_box);
+  // document.getElementById("c_page").append(comment_box);
+  document.getElementById(clickedItem).append(comment_box);
  // document.getElementById("c_page").append(comment_box);
- document.getElementById("comment").value = " ";
-
+  
+  document.getElementById("comment").value = " ";
+ 
 
   
 //   var box = document.createElement("div"); 
